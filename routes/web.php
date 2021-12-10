@@ -12,7 +12,14 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+class Instants {
+    public $title = 'titulo1';
+    function __construct($title)
+    {
+        $this->title = $title;
+    }
+}
 Route::get('/', function () {
-    return view('landing');
+    $instants = [new Instants('hola'),new Instants('mundo')];
+    return view('landing', ['instants'=>$instants]);
 });
