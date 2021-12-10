@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Instant;
 use Illuminate\Http\Request;
 
 class Instants {
@@ -16,7 +17,7 @@ class LandingController extends Controller
 {
     public function index()
     {
-        $instants = [new Instants('hola'),new Instants('mundo')];
+        $instants = Instant::all();
         return view('landing', ['instants'=>$instants]);
     }
    
