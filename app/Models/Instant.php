@@ -11,6 +11,6 @@ class Instant extends Model
     
     protected $fillable = [
         'title',
-        'img'
+        'img',
     ];
 }
