@@ -81,6 +81,9 @@ class InstantController extends Controller
      */
     public function destroy($id)
     {
-        dd($id);
+        $instantToDelete = Instant::findOrFail($id);
+        $instantToDelete->delete();
+
+        return back();
     }
 }
