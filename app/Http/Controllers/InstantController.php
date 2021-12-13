@@ -25,7 +25,7 @@ class InstantController extends Controller
      */
     public function create()
     {
-        //
+        return view('instantForm');
     }
 
     /**
@@ -83,7 +83,7 @@ class InstantController extends Controller
     {
         $instantToDelete = Instant::findOrFail($id);
         $instantToDelete->delete();
-
+        //Instant::destroy($id);
         return back();
     }
 }

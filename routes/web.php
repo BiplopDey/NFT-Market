@@ -17,4 +17,5 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [LandingController::class, 'index']);
 
+Route::get('/instants/create',[InstantController::class, 'create']);
 Route::delete('/instants/{id}',[InstantController::class, 'destroy']);
