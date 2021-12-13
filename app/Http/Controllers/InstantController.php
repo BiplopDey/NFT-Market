@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Instant;
 use App\Http\Requests\StoreInstantRequest;
 use App\Http\Requests\UpdateInstantRequest;
-
+use Illuminate\Http\Request;
 class InstantController extends Controller
 {
     /**
@@ -34,9 +34,14 @@ class InstantController extends Controller
      * @param  \App\Http\Requests\StoreInstantRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreInstantRequest $request)
+    public function store(Request $request)
     {
-        //
+        $data = [
+            'title' => $request->title,
+            'img' => $request->img,
+        ];
+        Instant::create($data);
+        return redirect(route('landing'));
     }
 
     /**
