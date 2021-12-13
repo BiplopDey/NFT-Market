@@ -79,8 +79,8 @@ class InstantController extends Controller
      * @param  \App\Models\Instant  $instant
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Instant $instant)
+    public function destroy($id)
     {
-        //
+        dd($id);
     }
 }
