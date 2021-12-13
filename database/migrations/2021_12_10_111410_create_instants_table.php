@@ -16,6 +16,7 @@ class CreateInstantsTable extends Migration
         Schema::create('instants', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('img');
             $table->timestamps();
         });
     }

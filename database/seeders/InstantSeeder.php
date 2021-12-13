@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Instant;
 
 class InstantSeeder extends Seeder
 {
@@ -14,7 +13,5 @@ class InstantSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\Instant::factory(10)->create();
-        //Instant::factory(10)->create();
     }
 }
