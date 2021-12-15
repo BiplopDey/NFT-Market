@@ -90,6 +90,10 @@ class InstantController extends Controller
     public function destroy($id)
     {
         $instantToDelete = Instant::findOrFail($id);
+        if(Auth::id() != $instantToDelete->author->id){
+            return back();
+        }
+            
         $instantToDelete->delete();
         //Instant::destroy($id);
         return back();
