@@ -14,4 +14,8 @@ class Instant extends Model
         'img',
         'user_id'
     ];
+
+    public function author(){
+        return $this->belongsTo(User::class,'user_id');
+    }
 }
