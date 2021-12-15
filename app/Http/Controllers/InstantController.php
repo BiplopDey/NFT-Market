@@ -6,6 +6,7 @@ use App\Models\Instant;
 use App\Http\Requests\StoreInstantRequest;
 use App\Http\Requests\UpdateInstantRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 class InstantController extends Controller
 {
     /**
@@ -36,9 +37,11 @@ class InstantController extends Controller
      */
     public function store(Request $request)
     {
+        //dd(Auth::user());
         $data = [
             'title' => $request->title,
             'img' => $request->img,
+            'user_id' => Auth::user()->id,
         ];
         Instant::create($data);
         return redirect(route('landing'));

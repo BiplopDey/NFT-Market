@@ -23,6 +23,11 @@ class User extends Authenticatable
         'password',
     ];
 
+    public function instants(){
+        return $this->hasMany(Instant::class);
+    }
+
+
     /**
      * The attributes that should be hidden for serialization.
      *
