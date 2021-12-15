@@ -66,8 +66,9 @@ class InstantController extends Controller
      */
     public function edit($id)
     {
-        //dd($id);
-        return view('instantEdit');
+        $instantToEdit = Instant::findOrFail($id);
+        //dd($instantToEdit->title);
+        return view('instantEdit', ['instant'=>$instantToEdit]);
     }
 
     /**
@@ -77,9 +78,12 @@ class InstantController extends Controller
      * @param  \App\Models\Instant  $instant
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateInstantRequest $request, Instant $instant)
+    public function update($id, Request $request)
     {
-        //
+        //$instantToUpdate = Instant::findOrFail($id);
+        dd([$id,$request->title]);
+        
+        //return redirect(route('landing'));
     }
 
     /**
