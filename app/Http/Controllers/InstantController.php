@@ -64,9 +64,10 @@ class InstantController extends Controller
      * @param  \App\Models\Instant  $instant
      * @return \Illuminate\Http\Response
      */
-    public function edit(Instant $instant)
+    public function edit($id)
     {
-        //
+        //dd($id);
+        return view('instantEdit');
     }
 
     /**

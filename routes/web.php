@@ -21,6 +21,8 @@ Route::get('/instants/create',[InstantController::class, 'create'])->name('insta
 Route::post('/instants',[InstantController::class, 'store'])->name('instants.store');
 Route::delete('/instants/{id}',[InstantController::class, 'destroy']);
 
+Route::get('/edit/{id}', [InstantController::class, 'edit']);
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
