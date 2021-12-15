@@ -5,6 +5,7 @@
     <div class="container">
       <form action="/update/{{$instant->id}}" method="POST">
         @csrf
+        @method('PUT')
         <div class="form-group">
           <label for="exampleFormControlInput1">TITLE</label>
           <input type="text" value="{{$instant->title}}" name="title" class="form-control" id="exampleFormControlInput1" >

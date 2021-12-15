@@ -91,7 +91,7 @@ class InstantController extends Controller
         ];
         $instantToUpdate->update($data);
 
-        return redirect(route('landing'));
+        return redirect(route('landing'));//try with back()
     }
 
     /**

@@ -22,7 +22,7 @@ Route::post('/instants',[InstantController::class, 'store'])->name('instants.sto
 Route::delete('/instants/{id}',[InstantController::class, 'destroy']);
 
 Route::get('/edit/{id}', [InstantController::class, 'edit']);
-Route::post('/update/{id}', [InstantController::class, 'update']);
+Route::put('/update/{id}', [InstantController::class, 'update']);
 
 Auth::routes();
 
