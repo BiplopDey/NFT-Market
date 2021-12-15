@@ -81,10 +81,18 @@ class InstantController extends Controller
     public function update($id, Request $request)
     {
         $instantToUpdate = Instant::findOrFail($id);
-        //dd([$id,$request->title]);
-        $instantToUpdate->title = $request->title;
-        $instantToUpdate->img = $request->img;
-        $instantToUpdate->save();
+        // //dd([$id,$request->title]);
+        // $instantToUpdate->title = $request->title;
+        // $instantToUpdate->img = $request->img;
+        // $instantToUpdate->save();
+
+        $data = [
+            'title' => $request->title,
+            'img' => $request->img,
+            'user_id' => Auth::user()->id,
+        ];
+        $instantToUpdate->update($data);
+        
         return redirect(route('landing'));
     }
 
