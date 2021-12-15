@@ -67,6 +67,9 @@ class InstantController extends Controller
     public function edit($id)
     {
         $instantToEdit = Instant::findOrFail($id);
+        if(Auth::id() != $instantToEdit->author->id){
+            return back();
+        }
         //dd($instantToEdit->title);
         return view('instantEdit', ['instant'=>$instantToEdit]);
     }
