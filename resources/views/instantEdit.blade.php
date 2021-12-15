@@ -3,7 +3,7 @@
 @section('content')
     <div class="album py-5 bg-light">
     <div class="container">
-      <form action="/update/{{$instant->id}}" method="POST">
+      <form action="{{route('instants.update', ['id' => $instant->id])}}" method="POST">
         @csrf
         @method('PUT')
         <div class="form-group">

@@ -8,7 +8,7 @@
         <div class="d-flex justify-content-between align-items-center">
             <div class="btn-group">
             <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-            <a href="/edit/{{$instant->id}}">
+            <a href="{{route('instants.edit', ['id' => $instant->id])}}">
                 <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
             </a>
             <form action="/instants/{{$instant->id}}" method="POST">
