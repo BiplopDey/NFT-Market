@@ -11,7 +11,7 @@
             <a href="{{route('instants.edit', ['id' => $instant->id])}}">
                 <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
             </a>
-            <form action="/instants/{{$instant->id}}" method="POST">
+            <form action="{{route('instants.delete', ['id' => $instant->id])}}" method="POST">
                 @csrf
                 @method('DELETE')
                 <button type="submit" class="btn btn-sm btn-outline-secondary">Delete</button>

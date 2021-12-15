@@ -19,7 +19,7 @@ Route::get('/', [LandingController::class, 'index'])->name('landing');
 
 Route::get('/instants/create',[InstantController::class, 'create'])->name('instants.create')->middleware('auth');
 Route::post('/instants',[InstantController::class, 'store'])->name('instants.store');
-Route::delete('/instants/{id}',[InstantController::class, 'destroy']);
+Route::delete('/instants/{id}',[InstantController::class, 'destroy'])->name('instants.delete');
 
 Route::get('/edit/{id}', [InstantController::class, 'edit'])->name('instants.edit');
 Route::put('/update/{id}', [InstantController::class, 'update'])->name('instants.update');
