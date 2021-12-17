@@ -8,12 +8,13 @@ use Tests\TestCase;
 
 class LandingControllerTest extends TestCase
 {
+    use RefreshDatabase;
     /**
      * A basic feature test example.
      *
      * @return void
      */
-    public function test_example()
+    public function test_can_see_a_landig_page()
     {
         $response = $this->get('/');
 
