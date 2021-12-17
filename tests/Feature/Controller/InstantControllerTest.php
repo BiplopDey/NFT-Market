@@ -6,6 +6,7 @@ use App\Models\Instant;
 use App\Models\User;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
+use Illuminate\Support\Facades\Auth;
 use Tests\TestCase;
 
 class InstantControllerTest extends TestCase
@@ -90,5 +91,11 @@ class InstantControllerTest extends TestCase
         $this->assertDatabaseCount('instants', 1);
     }
 
-
+    public function test_auth_user_isAuth()
+    {
+        $user = User::factory()->create();
+        $instant = Instant::factory()->create();
+        
+        $this->actingAs($user)->assertTrue(Auth::user()->isAuthor($instant));
+    }
 }

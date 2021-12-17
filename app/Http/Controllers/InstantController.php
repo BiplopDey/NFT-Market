@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Instant;
+use App\Models\User;
 use App\Http\Requests\StoreInstantRequest;
 use App\Http\Requests\UpdateInstantRequest;
 use Illuminate\Http\Request;
@@ -67,7 +68,7 @@ class InstantController extends Controller
     public function edit($id)
     {
         $instantToEdit = Instant::findOrFail($id);
-        if(Auth::id() != $instantToEdit->author->id){
+        if(!Auth::user()->isAuthor($instantToEdit)){
             return back();
         }
         //dd($instantToEdit->title);
@@ -103,7 +104,7 @@ class InstantController extends Controller
     public function destroy($id)
     {
         $instantToDelete = Instant::findOrFail($id);
-        if(Auth::id() != $instantToDelete->author->id){
+        if(!Auth::user()->isAuthor($instantToDelete)){
             return back();
         }
             

@@ -27,6 +27,12 @@ class User extends Authenticatable
         return $this->hasMany(Instant::class);
     }
 
+    public function isAuthor(Instant $instant){
+        if ($instant->author->id == $this->id){
+            return true;
+        }  
+        return false;
+    }
 
     /**
      * The attributes that should be hidden for serialization.
@@ -46,4 +52,6 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    
 }
