@@ -28,10 +28,7 @@ class User extends Authenticatable
     }
 
     public function isAuthor(Instant $instant){
-        if ($instant->author->id == $this->id){
-            return true;
-        }  
-        return false;
+        return $instant->author->id === $this->id;
     }
 
     /**
