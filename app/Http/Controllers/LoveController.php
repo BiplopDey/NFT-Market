@@ -9,14 +9,7 @@ use App\Models\User;
 class LoveController extends Controller
 {
     public function loveToggle($instantId){
-        $user = Auth::user();
-        if($user->isInLove($instantId)){
-            $user->loves()->detach($instantId);
-            return back();
-        }
-        $user->loves()->attach($instantId);
-        //Auth::user()->loves()->attach($instantId);
-       // dd($id);
+        Auth::user()->loveToggle($instantId);
         return back();
     }
 

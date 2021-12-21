@@ -35,10 +35,17 @@ class User extends Authenticatable
         return $this->loves()->find($instantId) !== null;
     }
 
+    public function loveToggle($instantId){
+        if($this->isInLove($instantId)){
+            $this->loves()->detach($instantId);
+            return;
+        }
+        $this->loves()->attach($instantId);
+    }
+
     public function isAuthor(Instant $instant){
         return $instant->author->id === $this->id;
     }
-
 
     /**
      * The attributes that should be hidden for serialization.
