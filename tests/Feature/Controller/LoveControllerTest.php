@@ -22,8 +22,22 @@ class LoveControllerTest extends TestCase
         $instant = Instant::factory()->create();
 
         $response = $this->actingAs($user)
-        ->get('/instants/love/1');//route('instants.love',['id'=>$instant->id]));
+        ->get(route('instants.love',['id'=>$instant->id]));
 
         $this->assertTrue($user->isInLove($instant));
     }
+
+    public function test_auth_user_can_un_love_an_instant(){
+        
+        $user = User::factory()->create();
+        $instant = Instant::factory()->create();
+        $user->loves()->attach($instant);
+
+        $response = $this->actingAs($user)
+        ->get(route('instants.love',['id'=>$instant->id]));
+
+        $this->assertFalse($user->isInLove($instant));
+    }
+
+   
 }

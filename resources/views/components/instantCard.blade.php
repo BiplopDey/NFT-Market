@@ -22,7 +22,11 @@
                     if(Auth::user()->isInLove($instant)) $heart = 'bi bi-heart-fill';
                 @endphp
                 </div>
-                    <small class="text-muted"><i class="{{$heart}}"></i></small>
+                    <small class="text-muted">
+                        <a href="{{route('instants.love', ['id'=>$instant->id])}}">
+                            <i class="{{$heart}}"></i>
+                        </a>
+                    </small>
                 </div>
             @endauth
         </div>
