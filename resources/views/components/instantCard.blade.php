@@ -17,10 +17,14 @@
                     @method('DELETE')
                     <button type="submit" class="btn btn-sm btn-outline-secondary">Delete</button>
                 </form>
+                @php
+                    $heart = 'bi bi-heart';
+                    if(Auth::user()->isInLove($instant)) $heart = 'bi bi-heart-fill';
+                @endphp
+                </div>
+                    <small class="text-muted"><i class="{{$heart}}"></i></small>
+                </div>
             @endauth
-            </div>
-                <small class="text-muted"><i class="bi bi-heart"></i></small>
-            </div>
         </div>
     </div>
 </div>
