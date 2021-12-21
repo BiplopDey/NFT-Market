@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        User::factory([
+        $user = User::factory([
             'email'=>'dey@dey.com',
             'name' => 'dey',
         ])->create();
@@ -25,6 +25,8 @@ class DatabaseSeeder extends Seeder
             "img" => 'https://helpx.adobe.com/content/dam/help/en/photoshop/using/convert-color-image-black-white/jcr_content/main-pars/before_and_after/image-before/Landscape-Color.jpg',
             "user_id" => 1,
         ]);
-        Instant::factory(10)->create();
+        $instant = Instant::factory(10)->create();
+
+        $user->loves()->attach($instant);
     }
 }
