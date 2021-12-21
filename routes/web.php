@@ -29,7 +29,7 @@ Route::get('/instants/love/{id}', [LoveController::class, 'loveToggle'])->name('
 //Admin Routes
 Route::get('/dashboard', function(){
     return view('admin.index');
-})->name('admin.index');
+})->name('admin.index')->middleware('Admin');
 
 Auth::routes();
 
