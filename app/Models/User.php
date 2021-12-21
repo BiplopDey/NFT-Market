@@ -27,9 +27,14 @@ class User extends Authenticatable
         return $this->hasMany(Instant::class);
     }
 
+    public function loves(){
+        return $this->belongsToMany(Instant::class, 'loves');
+    }
+
     public function isAuthor(Instant $instant){
         return $instant->author->id === $this->id;
     }
+
 
     /**
      * The attributes that should be hidden for serialization.
