@@ -18,9 +18,8 @@
                     <button type="submit" class="btn btn-sm btn-outline-secondary">Delete</button>
                 </form>
             @endauth
-           
             </div>
-                <small class="text-muted">9 Like</small>
+                <small class="text-muted"><i class="bi bi-heart"></i></small>
             </div>
         </div>
     </div>

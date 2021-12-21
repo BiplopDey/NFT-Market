@@ -45,20 +45,17 @@ class UserTest extends TestCase
         $this->assertEquals(0, $user->loves()->count());
     }
 
-    public function test_can_know_user_loves_an_instant()
+    public function test_can_know_if_user_loves_an_instant()
     {
         $user = User::factory()->create();
         $instant = Instant::factory()->create();
 
         $user->loves()->attach($instant);
         $this->assertTrue($user->isInLove($instant));
-    }
 
-    public function test_can_know_user_does_not_love_an_instant()
-    {
-        $user = User::factory()->create();
-        $instant = Instant::factory()->create();
-
+        $user->loves()->detach($instant);
         $this->assertFalse($user->isInLove($instant));
     }
+
+
 }
