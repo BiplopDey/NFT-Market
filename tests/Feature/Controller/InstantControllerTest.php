@@ -90,12 +90,4 @@ class InstantControllerTest extends TestCase
 
         $this->assertDatabaseCount('instants', 1);
     }
-
-    public function test_auth_user_isAuth()
-    {
-        $user = User::factory()->create();
-        $instant = Instant::factory()->create();
-        
-        $this->actingAs($user)->assertTrue(Auth::user()->isAuthor($instant));
-    }
 }

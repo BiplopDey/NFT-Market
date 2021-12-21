@@ -31,6 +31,10 @@ class User extends Authenticatable
         return $this->belongsToMany(Instant::class, 'loves');
     }
 
+    public function isInLove($instantId){
+        return $this->loves()->find($instantId) !== null;
+    }
+
     public function isAuthor(Instant $instant){
         return $instant->author->id === $this->id;
     }
