@@ -3,6 +3,7 @@
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\InstantController;
 use App\Http\Controllers\LoveController;
+use App\Http\Controllers\loversListController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,6 +27,8 @@ Route::put('/update/{id}', [InstantController::class, 'update'])->name('instants
 Route::get('/instants/love/{id}', [LoveController::class, 'loveToggle'])->name('instants.love')->middleware('auth');
 
 Route::get('/myInstants', [LandingController::class, 'myInstants'])->name('myInstants')->middleware('auth');
+
+Route::get('/instant/{id}/lovers', [loversListController::class, 'loversList'])->name('instants.lovers');
 
 //Admin Routes
 Route::get('/dashboard', function(){

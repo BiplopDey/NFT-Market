@@ -30,9 +30,11 @@
                             <i class="{{$heart}}"></i>
                         </a> 
                         @if ($instant->lovers->count())
+                        <a href="{{route('instants.lovers', ['id'=>$instant->id])}}">
                             <div>
                                 {{$instant->lovers->count()}}-Lovers    
-                            </div>    
+                            </div> 
+                        </a>
                         @endif
                     </small>
                 </div>
