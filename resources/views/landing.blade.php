@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('content')
-  @if (!empty($instants))
-    <x-slider :events='$instants'/> 
+  @if (!empty($topInstants))
+    <x-slider :events='$topInstants'/> 
   @endif
   
   <div class="album py-5 bg-light">

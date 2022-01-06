@@ -18,7 +18,7 @@ class LandingController extends Controller
     public function index()
     {
         $instants = Instant::all();
-        return view('landing', ['instants'=>$instants]);
+        return view('landing', ['instants'=>$instants, 'topInstants' => Instant::topInstants(3)]);
     }
    
 }

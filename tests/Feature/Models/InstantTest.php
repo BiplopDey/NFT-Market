@@ -34,8 +34,8 @@ class InstantTest extends TestCase
 
         $instantTop1->attachUser($users[0]);
         
-        $instantTopLovers = Instant::topLovers(1);
-        $this->assertEquals($instantTop1->id, $instantTopLovers[0]->id);
+        $instanttopInstants = Instant::topInstants(1);
+        $this->assertEquals($instantTop1->id, $instanttopInstants[0]->id);
     }
     
     
@@ -62,11 +62,11 @@ class InstantTest extends TestCase
         $instants[3]->attachUser($users[0]);
         $instants[4]->attachUser($users[1]);
 
-        $instantTopLovers = Instant::topLovers(3);
+        $instanttopInstants = Instant::topInstants(3);
 
-        $this->assertEquals($instantTop1->id, $instantTopLovers[0]->id);
-        $this->assertEquals($instantTop2->id, $instantTopLovers[1]->id);
-        $this->assertEquals($instantTop3->id, $instantTopLovers[2]->id);
+        $this->assertEquals($instantTop1->id, $instanttopInstants[0]->id);
+        $this->assertEquals($instantTop2->id, $instanttopInstants[1]->id);
+        $this->assertEquals($instantTop3->id, $instanttopInstants[2]->id);
     }
     
 }

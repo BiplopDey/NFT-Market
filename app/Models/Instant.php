@@ -21,9 +21,8 @@ class Instant extends Model
         return $this->belongsToMany(User::class, 'loves');
     }
 
-    public static function topLovers(int $top)
+    public static function topInstants(int $top)
     {   
-        //dd(self::orderBy('loversCount','desc')->take($top)->get());
         return self::orderBy('loversCount','desc')->take($top)->get();
     }
 
