@@ -18,8 +18,9 @@ class LandingControllerTest extends TestCase
      */
     public function test_can_see_a_landig_page()
     {
+        User::factory()->create();
+        $instants = Instant::factory()->create();
         $response = $this->get(route('landing'));
-
         $response->assertStatus(200)->assertViewIs('landing');
     }
 

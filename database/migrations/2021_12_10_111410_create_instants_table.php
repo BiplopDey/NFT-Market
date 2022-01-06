@@ -18,6 +18,7 @@ class CreateInstantsTable extends Migration
             $table->string('title');
             $table->string('img');
             $table->foreignId('user_id')->nullable()->default(null);
+            $table->integer('loversCount')->default(0);
             $table->timestamps();
         });
     }

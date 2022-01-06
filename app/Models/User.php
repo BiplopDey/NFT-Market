@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Http\Controllers\Instants;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -35,12 +36,14 @@ class User extends Authenticatable
         return $this->loves()->find($instantId) != null;
     }
 
-    public function loveToggle($instantId){
-        if($this->isInLove($instantId)){
-            $this->loves()->detach($instantId);
+    public function loveToggle(int $instantId){
+        $instant = Instant::find($instantId);
+        
+        if($this->isInLove($instant)){
+            $instant->detachUser($this);
             return;
         }
-        $this->loves()->attach($instantId);
+        $instant->attachUser($this);
     }
 
     public function isAuthor(Instant $instant){

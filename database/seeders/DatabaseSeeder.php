@@ -33,6 +33,6 @@ class DatabaseSeeder extends Seeder
         ]);
         $instant = Instant::factory(10)->create();
 
-        $user->loves()->attach($instant);
+        //$user->loves()->attach($instant);
     }
 }
