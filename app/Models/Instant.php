@@ -22,7 +22,8 @@ class Instant extends Model
     }
 
     public static function topLovers(int $top)
-    {
+    {   
+        //dd(self::orderBy('loversCount','desc')->take($top)->get());
         return self::orderBy('loversCount','desc')->take($top)->get();
     }
 

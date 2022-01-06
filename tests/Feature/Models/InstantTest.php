@@ -25,60 +25,48 @@ class InstantTest extends TestCase
         $instant->attachUser($users[1]);
         $this->assertEquals(2, $instant->loversCount);
     }
-    /*
-    public function test_the_top_1_most_loved_instant()
+    
+    public function test_the_top_loved_instant()
     {
         $users = User::factory(5)->create();
         $instant = Instant::factory(5)->create();
         $instantTop1 = $instant[0];
 
-        $users[0]->loves()->attach($instantTop1);
-        $users[1]->loves()->attach($instantTop1);
-        $users[2]->loves()->attach($instantTop1);
-        $users[3]->loves()->attach($instantTop1);
+        $instantTop1->attachUser($users[0]);
         
-        $users[0]->loves()->attach($instantTop2);
-        $users[1]->loves()->attach($instantTop2);
-        $users[2]->loves()->attach($instantTop2);
-
-        $users[0]->loves()->attach($instantTop3);
-        $users[1]->loves()->attach($instantTop3);
-
-        $users[0]->loves()->attach($instant[3]);
-        $users[0]->loves()->attach($instant[4]);
-
-        $instantTopLovers = Instant::topLovers(3);
-
-        $this->assertEquals($instantTop1, $instantTopLovers[0]);
+        $instantTopLovers = Instant::topLovers(1);
+        $this->assertEquals($instantTop1->id, $instantTopLovers[0]->id);
     }
-    */
-    /*
+    
+    
     public function test_the_top_3_most_loved_instant()
     {
         $users = User::factory(5)->create();
-        $instant = Instant::factory(5)->create();
-        $instantTop1 = $instant[0];
-        $instantTop2 = $instant[1];
-        $instantTop3 = $instant[2];
-
-        $users[0]->loves()->attach($instantTop1);
-        $users[1]->loves()->attach($instantTop1);
-        $users[2]->loves()->attach($instantTop1);
-        $users[3]->loves()->attach($instantTop1);
+        $instants = Instant::factory(5)->create();
+        $instantTop1 = $instants[0];
+        $instantTop2 = $instants[1];
+        $instantTop3 = $instants[2];
         
-        $users[0]->loves()->attach($instantTop2);
-        $users[1]->loves()->attach($instantTop2);
-        $users[2]->loves()->attach($instantTop2);
+        $instantTop1->attachUser($users[0]);
+        $instantTop1->attachUser($users[1]);
+        $instantTop1->attachUser($users[2]);
+        $instantTop1->attachUser($users[3]);
+        
+        $instantTop2->attachUser($users[0]);
+        $instantTop2->attachUser($users[1]);
+        $instantTop2->attachUser($users[2]);
 
-        $users[0]->loves()->attach($instantTop3);
-        $users[1]->loves()->attach($instantTop3);
+        $instantTop3->attachUser($users[0]);
+        $instantTop3->attachUser($users[1]);
 
-        $users[0]->loves()->attach($instant[3]);
-        $users[0]->loves()->attach($instant[4]);
+        $instants[3]->attachUser($users[0]);
+        $instants[4]->attachUser($users[1]);
 
         $instantTopLovers = Instant::topLovers(3);
 
-        $this->assertEquals($instantTop1, $instantTopLovers[0]);
+        $this->assertEquals($instantTop1->id, $instantTopLovers[0]->id);
+        $this->assertEquals($instantTop2->id, $instantTopLovers[1]->id);
+        $this->assertEquals($instantTop3->id, $instantTopLovers[2]->id);
     }
-    */
+    
 }

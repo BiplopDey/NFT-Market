@@ -9,7 +9,7 @@
             <div class="btn-group">
             @auth
                 <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                @if(Auth::user()->isAuthor($instant))
+                @if(Auth::user()->isAuthor($instant) || Auth::user()->isAdmin)
                     <a href="{{route('instants.edit', ['id' => $instant->id])}}">
                         <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
                     </a>
