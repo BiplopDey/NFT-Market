@@ -66,5 +66,20 @@ class LandingControllerTest extends TestCase
         $response->assertSee($this->instantDeleteButton)->assertSee($this->instantEditButton);
     }
 
-    
+    public function test_not_auth_user_cant_see_my_instants_page()
+    {
+        $user=User::factory()->create();
+        $instants = Instant::factory()->create();
+        
+        $response = $this->get(route('myInstants'));
+        $response->assertStatus(302)->assertRedirect('/login');
+    }
+
+    public function test_auth_user_can_see_their_instants_page()
+    {
+        $user=User::factory()->create();
+        $instants = Instant::factory(2)->create();
+        $response = $this->actingAs($user)->get(route('myInstants'));
+        $response->assertSee($instants[0]->title)->assertSee($instants[0]->title);
+    }
 }

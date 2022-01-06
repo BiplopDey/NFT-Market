@@ -77,7 +77,7 @@
         </nav>
         <section>
             <a href="{{route('instants.create')}}">New Instant</a> /
-            <a href="#">My instants</a>
+            <a href="{{route('myInstants')}}">My instants</a>
         </section>
         <main class="py-4">
             @yield('content')

@@ -23,8 +23,9 @@ Route::post('/instants',[InstantController::class, 'store'])->name('instants.sto
 Route::delete('/instants/{id}',[InstantController::class, 'destroy'])->name('instants.delete')->middleware('auth');
 Route::get('/edit/{id}', [InstantController::class, 'edit'])->name('instants.edit')->middleware('auth');
 Route::put('/update/{id}', [InstantController::class, 'update'])->name('instants.update')->middleware('auth');
-
 Route::get('/instants/love/{id}', [LoveController::class, 'loveToggle'])->name('instants.love')->middleware('auth');
+
+Route::get('/myInstants', [LandingController::class, 'myInstants'])->name('myInstants')->middleware('auth');
 
 //Admin Routes
 Route::get('/dashboard', function(){
