@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-    <x-createOrEdit :instant = "$instant"/>
+    <x-createOrEdit :instant="$instant"/>
 @endsection
   

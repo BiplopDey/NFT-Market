@@ -32,7 +32,7 @@ class User extends Authenticatable
     }
 
     public function isInLove($instantId){
-        return $this->loves()->find($instantId) !== null;
+        return $this->loves()->find($instantId) != null;
     }
 
     public function loveToggle($instantId){
@@ -44,7 +44,7 @@ class User extends Authenticatable
     }
 
     public function isAuthor(Instant $instant){
-        return $instant->author->id === $this->id;
+        return $instant->author->id == $this->id;
     }
 
     /**

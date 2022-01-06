@@ -9,14 +9,17 @@
             <div class="btn-group">
             @auth
                 <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                <a href="{{route('instants.edit', ['id' => $instant->id])}}">
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-                </a>
-                <form action="{{route('instants.delete', ['id' => $instant->id])}}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-sm btn-outline-secondary">Delete</button>
-                </form>
+                @if(Auth::user()->isAuthor($instant))
+                    <a href="{{route('instants.edit', ['id' => $instant->id])}}">
+                        <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                    </a>
+                    <form action="{{route('instants.delete', ['id' => $instant->id])}}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-sm btn-outline-secondary">Delete</button>
+                    </form>  
+                @endif
+                
                 @php
                     $heart = 'bi bi-heart';
                     if(Auth::user()->isInLove($instant)) $heart = 'bi bi-heart-fill';

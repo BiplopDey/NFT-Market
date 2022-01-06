@@ -33,7 +33,7 @@ class LandingControllerTest extends TestCase
         //$response->assertStatus(200)->assertViewIs('landing');
     }
 
-    public function test_can_see_uthors_name_in_instant_list()
+    public function test_can_see_authors_name_in_instant_list()
     {
         $user=User::factory()->create();
         $instants = Instant::factory(3)->create();
@@ -43,4 +43,27 @@ class LandingControllerTest extends TestCase
         ->assertSee($instants[1]->author->title)
         ->assertSee($user->name);
     }
+
+    public $instantDeleteButton = "Delete";
+    public $instantEditButton = "Edit";
+
+    public function test_not_auth_cant_see_edit_and_delete_button()
+    {
+        $user=User::factory(3)->create();
+        $instants = Instant::factory(3)->create();
+        
+        $response = $this->get(route('landing'));
+        $response->assertDontSee($this->instantDeleteButton)->assertDontSee($this->instantEditButton);
+    }
+
+    public function test_auth_user_can_only_see_edit_and_delete_button_of_their_instants()
+    {
+        $user=User::factory()->create();
+        $instants = Instant::factory(3)->create();
+        
+        $response = $this->actingAs($user)->get(route('landing'));
+        $response->assertSee($this->instantDeleteButton)->assertSee($this->instantEditButton);
+    }
+
+    
 }
