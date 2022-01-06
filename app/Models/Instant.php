@@ -15,6 +15,11 @@ class Instant extends Model
         'user_id'
     ];
 
+    public function lovers()
+    {
+        return $this->belongsToMany(User::class, 'loves');
+    }
+
     public function author(){
         return $this->belongsTo(User::class,'user_id');
     }

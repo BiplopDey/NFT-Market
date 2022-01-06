@@ -28,8 +28,15 @@
                     <small class="text-muted">
                         <a href="{{route('instants.love', ['id'=>$instant->id])}}">
                             <i class="{{$heart}}"></i>
-                        </a>
+                        </a> 
+                        
+                        @if ($instant->lovers->count())
+                        <div>
+                            {{$instant->lovers->count()}}-Lovers    
+                        </div>    
+                        @endif
                     </small>
+                   
                 </div>
             @endauth
         </div>
