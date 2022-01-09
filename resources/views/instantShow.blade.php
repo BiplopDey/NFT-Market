@@ -25,8 +25,11 @@
 
   <h1>Comments</h1>
   <ul class="list-group">
-    @foreach ($instant->comments as $comment)
-    <li class="list-group-item">{{$comment->pivot->comment}}</li>    
+    @foreach ($instant->comments as $commentor)
+    <li class="list-group-item">
+      Auth:
+      {{$commentor->name}} |
+      Comment:{{$commentor->pivot->comment}}</li>    
     @endforeach
   </ul>
 @endsection
