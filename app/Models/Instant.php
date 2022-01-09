@@ -16,6 +16,17 @@ class Instant extends Model
         'loversCount',
     ];
 
+    public function comments()
+    {
+        return $this->belongsToMany(User::class, 'comments')
+    	->withPivot('comment')->withTimestamps();
+    }
+
+    public function addComment($user, $comment)
+    {
+        $this->comments()->attach($user->id, ['comment'=>$comment]);
+    }
+
     public function lovers()
     {
         return $this->belongsToMany(User::class, 'loves');

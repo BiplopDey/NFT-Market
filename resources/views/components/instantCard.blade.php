@@ -8,7 +8,9 @@
         <div class="d-flex justify-content-between align-items-center">
             <div class="btn-group">
             @auth
-                <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                <a href="{{route('instants.show', ['id' => $instant->id])}}">
+                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                </a>
                 @if(Auth::user()->isAuthor($instant) || Auth::user()->isAdmin)
                     <a href="{{route('instants.edit', ['id' => $instant->id])}}">
                         <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
