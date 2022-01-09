@@ -7,7 +7,9 @@
         No lovers
     @endempty
     @foreach($lovers as $lover)
-        <li class="list-group-item">{{$lover->name}}</li>
+        <li class="list-group-item">
+          <a href="{{route('user.profile', $lover->id)}}">{{$lover->name}}</a>
+        </li>
     @endforeach   
   </ul>
 @endsection

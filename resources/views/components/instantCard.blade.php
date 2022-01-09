@@ -4,7 +4,10 @@
         <img src = "{{$instant->img}}" class="bd-placeholder-img card-img-top" width="100%" height="225" ></img>
         <div class="card-body">
         <p class="card-text">{{$instant->title}}</p>
-        <p class="card-text">{{$instant->author->name}}</p>
+        <p class="card-text">
+          Owner: 
+          <a href="{{route('user.profile', $instant->author->id)}}">{{$instant->author->name}}</a>
+        </p>
         <div class="d-flex justify-content-between align-items-center">
             <div class="btn-group">
             @auth

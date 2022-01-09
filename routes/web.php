@@ -5,6 +5,7 @@ use App\Http\Controllers\LandingController;
 use App\Http\Controllers\InstantController;
 use App\Http\Controllers\LoveController;
 use App\Http\Controllers\loversListController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,6 +33,7 @@ Route::post('/comment/{id}', [CommentController::class, 'addComment'])->name('in
 Route::get('/myInstants', [LandingController::class, 'myInstants'])->name('myInstants')->middleware('auth');
 
 Route::get('/instant/{id}/lovers', [loversListController::class, 'loversList'])->name('instants.lovers');
+Route::get('/profile/{id}', [UserController::class, 'view'])->name('user.profile');
 
 //Admin Routes
 Route::get('/dashboard', function(){
