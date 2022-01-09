@@ -54,9 +54,9 @@ class InstantController extends Controller
      * @param  \App\Models\Instant  $instant
      * @return \Illuminate\Http\Response
      */
-    public function show(Instant $instant)
+    public function show($id)
     {
-        //
+        return view('instantShow', ['instant'=>Instant::find($id)]);
     }
 
     /**

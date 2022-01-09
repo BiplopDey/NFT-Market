@@ -40,8 +40,8 @@ class LandingControllerTest extends TestCase
         $instants = Instant::factory(3)->create();
         
         $response = $this->get(route('landing'));
-        $response->assertSee($instants[0]->author->title)
-        ->assertSee($instants[1]->author->title)
+        $response->assertSee($instants[0]->author->name)
+        ->assertSee($instants[1]->author->name)
         ->assertSee($user->name);
     }
 

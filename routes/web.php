@@ -26,6 +26,8 @@ Route::get('/edit/{id}', [InstantController::class, 'edit'])->name('instants.edi
 Route::put('/update/{id}', [InstantController::class, 'update'])->name('instants.update')->middleware('auth');
 Route::get('/instants/love/{id}', [LoveController::class, 'loveToggle'])->name('instants.love')->middleware('auth');
 
+Route::get('/instant/{id}',[InstantController::class, 'show'])->name('instants.show');
+
 Route::get('/myInstants', [LandingController::class, 'myInstants'])->name('myInstants')->middleware('auth');
 
 Route::get('/instant/{id}/lovers', [loversListController::class, 'loversList'])->name('instants.lovers');

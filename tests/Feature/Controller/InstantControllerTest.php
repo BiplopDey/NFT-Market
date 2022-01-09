@@ -60,6 +60,17 @@ class InstantControllerTest extends TestCase
         $this->assertDatabaseCount('instants', 0);
     }
 
+    //SHOW
+    public function test_can_see_an_instant_page()
+    {
+        $user=User::factory()->create();
+        $instants = Instant::factory(2)->create();
+
+        $response = $this->get(route('instants.show',$instants[0]->id));
+         $response->assertStatus(200)->assertViewIs('instantShow');
+         $response->assertSee($instants[0]->author->name)->assertSee($instants[0]->title);
+    }
+
     //DELETE
     public function test_not_auth_user_cant_delete_an_instant()
     {
@@ -90,4 +101,6 @@ class InstantControllerTest extends TestCase
 
         $this->assertDatabaseCount('instants', 1);
     }
+
+    
 }
