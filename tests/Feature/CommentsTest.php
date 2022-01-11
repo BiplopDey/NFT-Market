@@ -25,8 +25,10 @@ class CommentsTest extends TestCase
         $instant->addComment($user, $comment);
         foreach ($instant->comments as $comment){
             //dd($comment->pivot->user_id);
-            dd($comment->pivot->comment);
+           // dd($comment->pivot->comment);
         }
         //$this->assertEquals($comment, $test);
+        $this->assertCount(1,$instant->comments);
     }
+
 }
