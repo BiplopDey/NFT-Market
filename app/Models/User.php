@@ -38,7 +38,6 @@ class User extends Authenticatable
 
     public function loveToggle(int $instantId){
         $instant = Instant::find($instantId);
-        
         if($this->isInLove($instant)){
             $instant->detachUser($this);
             return;

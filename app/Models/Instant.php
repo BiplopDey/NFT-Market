@@ -37,6 +37,12 @@ class Instant extends Model
         return self::orderBy('loversCount','desc')->take($top)->get();
     }
 
+    public function lovesCount()
+    {
+        return $this->loversCount;
+        //return $this->lovers()->count();
+    }
+
     public function attachUser(User $user)
     {   
         $user->loves()->attach($this);

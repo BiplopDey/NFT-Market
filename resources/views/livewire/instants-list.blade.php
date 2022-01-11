@@ -30,13 +30,12 @@
                         @endphp
                         </div>
                             <small class="text-muted">
-                                <a href="{{route('instants.love', ['id'=>$instant->id])}}">
-                                    <i class="{{$heart}}"></i>
-                                </a> 
-                                @if ($instant->lovers->count())
+                                <i wire:click="love({{$instant->id}})" class="{{$heart}}"></i>
+                                {{-- {{$instant->lovesCount()}} --}}
+                                @if ($instant->lovesCount())
                                 <a href="{{route('instants.lovers', ['id'=>$instant->id])}}">
                                     <div>
-                                        {{$instant->lovers->count()}}-Lovers    
+                                        {{$instant->lovesCount()}}-Lovers    
                                     </div> 
                                 </a>
                                 @endif
