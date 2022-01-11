@@ -25,9 +25,9 @@
     </div>
   </div>
 
-  <h1>Comments</h1>
+  <h1>commentators</h1>
   <ul class="list-group">
-    @foreach ($instant->comments as $commentor)
+    @foreach ($instant->commentators as $commentor)
     <li class="list-group-item">
       Auth:
       {{$commentor->name}} |

@@ -57,7 +57,7 @@ class InstantController extends Controller
     public function show($id)
     {
         $instant = Instant::find($id);
-        return view('instantShow', ['instant'=>$instant, 'comments'=>$instant->comments()]);
+        return view('instantShow', ['instant'=>$instant, 'commentators'=>$instant->commentators()]);
     }
 
     /**

@@ -8,7 +8,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 
-class CommentsTest extends TestCase
+class commentatorsTest extends TestCase
 {
     use RefreshDatabase;
     /**
@@ -23,12 +23,12 @@ class CommentsTest extends TestCase
 
         $comment = "This is an comment";
         $instant->addComment($user, $comment);
-        foreach ($instant->comments as $comment){
+        foreach ($instant->commentators as $comment){
             //dd($comment->pivot->user_id);
            // dd($comment->pivot->comment);
         }
         //$this->assertEquals($comment, $test);
-        $this->assertCount(1,$instant->comments);
+        $this->assertCount(1,$instant->commentators);
     }
 
 }
