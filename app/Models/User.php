@@ -3,14 +3,14 @@
 namespace App\Models;
 
 use App\Http\Controllers\Instants;
+use App\Services\Agent\Agent;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
-{
+class User extends Authenticatable implements Agent{
     use HasApiTokens, HasFactory, Notifiable;
 
     /**
@@ -32,7 +32,8 @@ class User extends Authenticatable
         return $this->belongsToMany(Instant::class, 'loves');
     }
 
-    public function isInLove($instantId){
+    public function isInLove($instantId):bool
+    {
         return $this->loves()->find($instantId) != null;
     }
 
@@ -44,7 +45,7 @@ class User extends Authenticatable
         }
         $instant->attachUser($this);
     }
-
+    
     public function isAuthor(Instant $instant){
         return $instant->author->id == $this->id;
     }
