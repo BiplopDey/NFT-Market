@@ -1,6 +1,7 @@
 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
     @foreach($instants as $instant)
-        <div class="col">
+        <livewire:instant-card :instant="$instant" :wire:key="$instant->id">
+         {{-- <div class="col">
             <div class="card shadow-sm">
                 <img src = "{{$instant->img}}" class="bd-placeholder-img card-img-top" width="100%" height="225" ></img>
                 <div class="card-body">
@@ -19,11 +20,9 @@
                             <a href="{{route('instants.edit', ['id' => $instant->id])}}">
                                 <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
                             </a>
-                            
+                
                             <button wire:click="delete({{$instant->id}})" class="btn btn-sm btn-outline-secondary">Delete</button>
-                            
                         @endif
-                        
                         @php
                             $heart = 'bi bi-heart';
                             if(Auth::user()->isInLove($instant)) $heart = 'bi bi-heart-fill';
@@ -31,19 +30,18 @@
                         </div>
                             <small class="text-muted">
                                 <i wire:click="love({{$instant->id}})" class="{{$heart}}"></i>
-                                {{-- {{$instant->lovesCount()}} --}}
                                 @if ($instant->lovesCount())
-                                <a href="{{route('instants.lovers', ['id'=>$instant->id])}}">
-                                    <div>
-                                        {{$instant->lovesCount()}}-Lovers    
-                                    </div> 
-                                </a>
+                                    <a href="{{route('instants.lovers', ['id'=>$instant->id])}}">
+                                        <div>
+                                            {{$instant->lovesCount()}}-Lovers    
+                                        </div> 
+                                    </a>
                                 @endif
                             </small>
                         </div>
                     @endauth
                 </div>
             </div>
-        </div>
+        </div>  --}}
     @endforeach
 </div>

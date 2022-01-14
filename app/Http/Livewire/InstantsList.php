@@ -10,7 +10,7 @@ use Livewire\Component;
 class InstantsList extends Component
 {
     public $instants;
-    public function __construct() {
+    public function mount() {
         $this->instants = Instant::all();
     }
     public function delete($instantId)
