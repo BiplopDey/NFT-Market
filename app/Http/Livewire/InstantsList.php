@@ -10,20 +10,25 @@ use Livewire\Component;
 class InstantsList extends Component
 {
     public $instants;
-    public function mount() {
+
+    public function mount() 
+    {
         $this->instants = Instant::all();
     }
+
     public function delete($instantId)
     {
         Instant::destroy($instantId);
         $this->instants = Instant::all();
     }
+
     public function love($instantId)
     {
         $loveService = new LoveServices();
         $loveService->toggleLove(Auth::user(), $instantId);
         $this->instants = Instant::all();
     }
+    
     public function render()
     {
         return view('livewire.instants-list');
