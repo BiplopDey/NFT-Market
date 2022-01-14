@@ -18,21 +18,15 @@
                         <a href="{{route('instants.edit', ['id' => $instant->id])}}">
                             <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
                         </a>
-                        <form action="{{route('instants.delete', ['id' => $instant->id])}}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="btn btn-sm btn-outline-secondary">Delete</button>
-                        </form>  
+                        
+                        <button wire:click="delete" class="btn btn-sm btn-outline-secondary">Delete</button>
+                     
                     @endif
                     
-                    @php
-                        $heart = 'bi bi-heart';
-                        if(Auth::user()->isInLove($instant)) $heart = 'bi bi-heart-fill';
-                    @endphp
                     </div>
                         <small class="text-muted">
                             <a href="{{route('instants.love', ['id'=>$instant->id])}}">
-                                <i class="{{$heart}}"></i>
+                                <i class="{{ $isInLove ? 'bi bi-heart-fill' : 'bi bi-heart'}}"></i>
                             </a> 
                             @if ($instant->lovers->count())
                             <a href="{{route('instants.lovers', ['id'=>$instant->id])}}">
