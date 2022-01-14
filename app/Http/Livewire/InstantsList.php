@@ -15,7 +15,8 @@ class InstantsList extends Component
     {
         $this->instants = Instant::all();
     }
-
+    
+    /*
     public function delete($instantId)
     {
         Instant::destroy($instantId);
@@ -28,6 +29,7 @@ class InstantsList extends Component
         $loveService->toggleLove(Auth::user(), $instantId);
         $this->instants = Instant::all();
     }
+    */
     
     public function render()
     {

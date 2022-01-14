@@ -14,26 +14,21 @@
                     <a href="{{route('instants.show', ['id' => $instant->id])}}">
                         <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
                     </a>
-                    @if(Auth::user()->isAuthor($instant) || Auth::user()->isAdmin)
+                    @if($user->isAuthor($instant) || $user->isAdmin)
                         <a href="{{route('instants.edit', ['id' => $instant->id])}}">
                             <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
                         </a>
-                        
                         <button wire:click="delete" class="btn btn-sm btn-outline-secondary">Delete</button>
-                     
                     @endif
-                    
                     </div>
                         <small class="text-muted">
-                            <a href="{{route('instants.love', ['id'=>$instant->id])}}">
-                                <i class="{{ $isInLove ? 'bi bi-heart-fill' : 'bi bi-heart'}}"></i>
-                            </a> 
-                            @if ($instant->lovers->count())
-                            <a href="{{route('instants.lovers', ['id'=>$instant->id])}}">
-                                <div>
-                                    {{$instant->lovers->count()}}-Lovers    
-                                </div> 
-                            </a>
+                            <i wire:click="loveToggle" class="{{ $isInLove ? 'bi bi-heart-fill' : 'bi bi-heart'}}"></i>
+                            @if ($lovesCount)
+                                <a href="{{route('instants.lovers', ['id'=>$instant->id])}}">
+                                    <div>
+                                        {{$lovesCount}}-Lovers    
+                                    </div> 
+                                </a>
                             @endif
                         </small>
                     </div>
