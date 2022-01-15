@@ -36,10 +36,8 @@ class InstantCard extends Component
     
     public function loveToggle()
     {
-        //dd($this->instant->id);
-         $this->loveService->toggleLove($this->user, $this->instant->id);
-        //LoveServices::toggleLove($this->user, $this->instant->id);
-
+        $this->loveService->toggleLove($this->user, $this->instant->id);
+        
         $this->isInLove = !$this->isInLove;
         $this->instant = Instant::find($this->instant->id);
         $this->lovesCount = $this->instant->lovesCount(); 

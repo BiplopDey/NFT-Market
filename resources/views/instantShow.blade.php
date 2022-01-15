@@ -11,7 +11,8 @@
       </small></p>
     </div>
   </div>
-  <h1>Add Comment</h1>
+  <livewire:comments :instant="$instant"/>
+  {{-- <h1>Add Comment</h1>
   <div class="album py-5 bg-light">
     <div class="container">
       <form action="{{route('instant.comment', ['id' => $instant->id])}}" method="POST">
@@ -24,7 +25,7 @@
       <form/>
     </div>
   </div>
-
+  
   <h1>commentators</h1>
   <ul class="list-group">
     @foreach ($instant->commentators as $commentor)
@@ -33,6 +34,6 @@
       {{$commentor->name}} |
       Comment:{{$commentor->pivot->comment}}</li>    
     @endforeach
-  </ul>
+  </ul> --}}
 @endsection
   
