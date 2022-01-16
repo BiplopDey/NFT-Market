@@ -22,6 +22,11 @@ class Instant extends Model
     	->withPivot('bid', 'currency')->withTimestamps();
     }
 
+    public function placeBid($userId, $amount, $currency)
+    {
+        $this->bidders()->attach($userId, ['bid' => $amount, 'currency' => $currency]);
+    }
+
     public function commentators()
     {
         return $this->belongsToMany(User::class, 'comments')

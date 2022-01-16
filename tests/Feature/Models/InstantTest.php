@@ -83,7 +83,7 @@ class InstantTest extends TestCase
         $user = User::factory()->create();
         $instant = Instant::factory()->create();
 
-        $instant->bid($user->id, 20, 'BTC');
+        $instant->placeBid($user->id, 20, 'BTC');
         $this->assertDatabaseCount('biddings', 1);
     }
 
