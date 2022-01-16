@@ -69,4 +69,24 @@ class InstantTest extends TestCase
         $this->assertEquals($instantTop3->id, $instanttopInstants[2]->id);
     }
     
+    public function test_can_bid_instants()
+    {
+        $user = User::factory()->create();
+        $instant = Instant::factory()->create();
+
+        $instant->bidders()->attach($user->id, ['bid' => 20, 'currency' => 'BTC']);
+        $this->assertDatabaseCount('biddings', 1);
+    }
+
+    public function test_can_bid_method()
+    {
+        $user = User::factory()->create();
+        $instant = Instant::factory()->create();
+
+        $instant->bid($user->id, 20, 'BTC');
+        $this->assertDatabaseCount('biddings', 1);
+    }
+
+
+
 }

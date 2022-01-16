@@ -16,6 +16,12 @@ class Instant extends Model
         'loversCount',
     ];
 
+    public function bidders()
+    {
+        return $this->belongsToMany(User::class, 'biddings')
+    	->withPivot('bid', 'currency')->withTimestamps();
+    }
+
     public function commentators()
     {
         return $this->belongsToMany(User::class, 'comments')
