@@ -11,21 +11,13 @@ class Comments extends Component
 {
     public $instant;
     public $comment;
-/*    public $comments;
 
-    public function mount()
-    {
-        $commentService = new CommentServices;
-        $this->comments = $commentService->allComments($this->instant->id);
-    }
-*/
     public function sendComment()
     {        
         $commentService = new CommentServices;
         $commentService->addComment(Auth::user(), $this->instant->id, $this->comment);
-        //$this->instant = Instant::find($this->instant->id);
-        //$this->comments = $commentService->allComments($this->instant->id);
     }
+
     public function render()
     {
         $commentService = new CommentServices;
