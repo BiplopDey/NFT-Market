@@ -16,11 +16,10 @@
   
   <h1>commentators</h1>
   <ul class="list-group">
-    @foreach ($instant->commentators as $commentor)
-    <li class="list-group-item">
-      Auth:
-      {{$commentor->name}} |
-      Comment:{{$commentor->pivot->comment}}</li>    
+    @foreach ($comments as $c)
+      <li class="list-group-item" >
+        Auth: {{$c->getAuthorName()}} | Comment:{{$c->getContent()}}
+      </li>
     @endforeach
   </ul>
 </div>
