@@ -86,7 +86,5 @@ class InstantTest extends TestCase
         $instant->placeBid($user->id, 20, 'BTC');
         $this->assertDatabaseCount('biddings', 1);
     }
-
-
-
+    
 }

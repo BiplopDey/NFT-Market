@@ -24,6 +24,11 @@ class User extends Authenticatable{
         'password',
     ];
 
+    public function myAuctions()
+    {
+        return $this->belongsToMany(Instant::class, 'biddings');
+    }
+
     public function instants(){
         return $this->hasMany(Instant::class);
     }

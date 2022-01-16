@@ -15,7 +15,7 @@ class Instant extends Model
         'user_id',
         'loversCount',
     ];
-
+    
     public function bidders()
     {
         return $this->belongsToMany(User::class, 'biddings')

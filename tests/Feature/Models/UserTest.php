@@ -57,5 +57,20 @@ class UserTest extends TestCase
         $this->assertFalse($user->isInLove($instant));
     }
 
+    public function test_can_get_my_auctions()
+    {
+        $user = User::factory()->create();
+        $instants = Instant::factory(4)->create();
+        
+        foreach ($instants as $instant)
+            $instant->placeBid($user->id, 3, 'btc');    
+        
+        $instants[0]->placeBid($user->id, 2, 'eth');
+        $myAuctions = $user->myAuctions;
+
+        $this->assertCount(5, $myAuctions);
+        foreach ($instants as $instant)
+            $myAuctions->contains($instant->id);    
+    }
 
 }
