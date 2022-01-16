@@ -73,4 +73,21 @@ class UserTest extends TestCase
             $myAuctions->contains($instant->id);    
     }
 
+    public function test_can_get_my_unique_auctions()
+    {
+        $user = User::factory()->create();
+        $instants = Instant::factory(4)->create();
+        
+        foreach ($instants as $instant)
+            $instant->placeBid($user->id, 3, 'btc');    
+        
+        $instants[0]->placeBid($user->id, 2, 'eth');
+        $myAuctions = $user->myUniqueAuctions();
+
+        $this->assertCount(4, $myAuctions);
+        foreach ($instants as $instant)
+            $myAuctions->contains($instant->id);    
+    }
+
+
 }
