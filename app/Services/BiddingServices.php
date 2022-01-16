@@ -51,7 +51,6 @@ class BiddingServices{
                 $max = $bidding->getAmount();
             }
                 
-        
         return $MaxBidding;
     }
 }

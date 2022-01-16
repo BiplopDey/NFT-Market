@@ -14,7 +14,7 @@
     <div class="container">
         <div class="form-group">
           <label for="exampleFormControlInput1">TITLE</label>
-          <input type="text" wire:model="comment" class="form-control" >
+          <input type="text" wire:model="comment" class="form-control">
         </div>
         <button  wire:click="sendComment" class="btn btn-primary mb-2">COMMENT</button>
     </div>
