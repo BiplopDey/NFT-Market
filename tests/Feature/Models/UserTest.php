@@ -70,7 +70,7 @@ class UserTest extends TestCase
 
         $this->assertCount(5, $myAuctions);
         foreach ($instants as $instant)
-            $myAuctions->contains($instant->id);    
+            $this->assertTrue($myAuctions->contains($instant->id));    
     }
 
     public function test_can_get_my_unique_auctions()
@@ -86,7 +86,7 @@ class UserTest extends TestCase
 
         $this->assertCount(4, $myAuctions);
         foreach ($instants as $instant)
-            $myAuctions->contains($instant->id);    
+            $this->assertTrue($myAuctions->contains($instant->id));    
     }
 
 

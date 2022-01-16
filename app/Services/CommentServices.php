@@ -8,8 +8,8 @@ use App\Repository\CommentRepository;
 class CommentServices{
     public function addComment($user, $instantId, $comment)
     {
-        if(!$user) return;
         $instant = Instant::find($instantId);
+        if(!$user || !$instant) return;
         $instant->addComment($user, $comment);
     }
 
