@@ -38,7 +38,7 @@ final class InstantEntity
         return new self(
             new InstantId($data['id']),
             new Title($data['title']),
-            new Image($data['image']),
+            new Image($data['img']),
             $data['owner_id'],
             $data['createdAtTimestamp'],
             $data['loversCount']
@@ -50,9 +50,10 @@ final class InstantEntity
         return $this->loversCount;
     }
     
-    public function id(): InstantId
+    
+    public function title(): string
     {
-        return $this->id;
+        return $this->title->value();
     }
 
     public function createdAtTimestamp(): int
@@ -70,7 +71,7 @@ final class InstantEntity
         return [
             'id' => $this->id()->value(),
             'title' => $this->title->value(),
-            'image' => $this->image->value(),
+            'img' => $this->image->value(),
             'owner_id' => $this->owner_id,
             'createdAtTimestamp' => $this->createdAtTimestamp,
             'loversCount' => $this->loversCount,

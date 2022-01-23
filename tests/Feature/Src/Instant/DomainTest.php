@@ -59,12 +59,12 @@ class DomainTest extends TestCase
         new Image($str);
     }
 
-    public function test_instant_entity()
+    public function test_instant_entity_array()
     {
         $data = [
             'id' => 1, 
             'title'=>"hola", 
-            'image' => "imagen",
+            'img' => "imagen",
             'owner_id'=>12,
             'createdAtTimestamp'=>123,
             'loversCount'=>23,
