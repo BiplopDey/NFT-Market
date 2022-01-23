@@ -27,4 +27,13 @@ class ApplicationTest extends TestCase
         $this->assertEquals(1, $user->loves()->count());
         
     }
+/*
+    public function test_use_time()
+    {
+        $user = User::factory()->create();
+        $instant = Instant::factory()->create();
+
+        dd($instant->created_at->timestamp);
+        
+    }*/
 }

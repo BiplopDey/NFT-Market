@@ -1,8 +1,9 @@
 <?php
 
-
+declare(strict_types=1);
 namespace App\Src\Instant\Domain;
 
+use App\Src\Instant\Domain\Exceptions\IdNotFound;
 
 final class InstantId
 {
@@ -27,7 +28,7 @@ final class InstantId
     public function setId(int $id): void
     {
         if ($id < 0) {
-            throw new IdNotFound($id);
+            throw new IdNotFound("Invalid id: ".$id);
         }
 
         $this->id = $id;
