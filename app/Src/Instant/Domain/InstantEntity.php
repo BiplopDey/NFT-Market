@@ -1,9 +1,8 @@
-
 <?php
 
 declare(strict_types=1);
 
-namespace App\Src\Employee\Domain;
+namespace App\Src\Instant\Domain;
 
 use App\Src\Instant\Domain\Image;
 use App\Src\Instant\Domain\InstantId;
@@ -12,7 +11,7 @@ use App\Src\Instant\Domain\Title;
 final class InstantEntity
 {
     private InstantId $id;
-    private int $createAtTimestamp;
+    private int $createdAtTimestamp;
     private Title $title;
     private Image $image;
     private int $owner_id;
@@ -23,14 +22,14 @@ final class InstantEntity
         Title $title, 
         Image $image, 
         int $owner_id,
-        int $createAtTimestamp,
+        int $createdAtTimestamp,
         int $loversCount)
     {
         $this->id = $id;
         $this->title = $title;
         $this->image = $image;
         $this->owner_id = $owner_id;
-        $this->createAtTimestamp = $createAtTimestamp;
+        $this->createdAtTimestamp = $createdAtTimestamp;
         $this->loversCount = $loversCount;
     }
 
@@ -41,7 +40,7 @@ final class InstantEntity
             new Title($data['title']),
             new Image($data['image']),
             $data['owner_id'],
-            $data['createAtTimestamp'],
+            $data['createdAtTimestamp'],
             $data['loversCount']
         );
     }
@@ -56,9 +55,9 @@ final class InstantEntity
         return $this->id;
     }
 
-    public function createAtTimestamp(): int
+    public function createdAtTimestamp(): int
     {
-        return $this->createAtTimestamp;
+        return $this->createdAtTimestamp;
     }
 
     public function owner(): int
@@ -73,7 +72,7 @@ final class InstantEntity
             'title' => $this->title->value(),
             'image' => $this->image->value(),
             'owner_id' => $this->owner_id,
-            'createdAtTimestamp' => $this->createAtTimestamp,
+            'createdAtTimestamp' => $this->createdAtTimestamp,
             'loversCount' => $this->loversCount,
         ];
     }

@@ -6,6 +6,7 @@ use App\Src\Instant\Domain\Exceptions\IdNotFound;
 use App\Src\Instant\Domain\Exceptions\IncorrectImage;
 use App\Src\Instant\Domain\Exceptions\IncorrectTitle;
 use App\Src\Instant\Domain\Image;
+use App\Src\Instant\Domain\InstantEntity;
 use App\Src\Instant\Domain\InstantId;
 use App\Src\Instant\Domain\Title;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -57,4 +58,19 @@ class DomainTest extends TestCase
         $str="";
         new Image($str);
     }
+
+    public function test_instant_entity()
+    {
+        $data = [
+            'id' => 1, 
+            'title'=>"hola", 
+            'image' => "imagen",
+            'owner_id'=>12,
+            'createdAtTimestamp'=>123,
+            'loversCount'=>23,
+        ];
+        $instant = InstantEntity::fromArray($data);
+        $this->assertEquals($data, $instant->toArray());
+    }
+
 }
