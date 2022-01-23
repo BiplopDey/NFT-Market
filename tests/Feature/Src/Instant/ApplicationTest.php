@@ -23,9 +23,8 @@ class ApplicationTest extends TestCase
         $instant = Instant::factory()->create();
 
         $loveService = new LoveInstantUseCase();
-        //$loveService->toggleLove($user, $instant->id);
-        //$this->assertEquals(1, $user->loves()->count());
-        $this->assertTrue($loveService->hola());
-        $this->assertEquals(1, 1);
+        $loveService->toggleLove($user, $instant->id);
+        $this->assertEquals(1, $user->loves()->count());
+        
     }
 }
