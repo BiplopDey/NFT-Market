@@ -45,6 +45,11 @@ final class InstantEntity
         );
     }
 
+    public function updateLoversCount(int $loversCount):void
+    {
+        $this->loversCount = $loversCount;
+    }
+
     public function loversCount(): int
     {
         return $this->loversCount;
@@ -66,6 +71,11 @@ final class InstantEntity
         return $this->owner_id;
     }
 
+    public function id()
+    {
+        return $this->id;
+    }
+    
     public function toArray(): array
     {
         return [

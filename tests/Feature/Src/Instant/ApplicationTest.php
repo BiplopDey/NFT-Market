@@ -6,6 +6,7 @@ use App\Models\Instant;
 use App\Models\User;
 use App\Src\Instant\Application\FindInstantUseCase;
 use App\Src\Instant\Application\LoveInstantUseCase;
+use App\Src\Instant\Application\UpdateInstantLoversCountUseCase;
 use App\Src\Instant\Infrastructure\EloquentInstantRepository;
 use Carbon\Carbon;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -35,15 +36,29 @@ class ApplicationTest extends TestCase
     {
         $user = User::factory()->create();
         $instant = Instant::factory()->create();
-        // $model = new Instant();
-        // $data = $model->findOrFail($instant->id)->toArray();
-        
-        // $data['createdAtTimestamp'] = Carbon::parse($data['created_at'])->timestamp;
-        // dd($data);
         
        $useCase = new FindInstantUseCase(new EloquentInstantRepository());
        $intantEntity = $useCase->execute($instant->id);
        $this->assertEquals($instant->title, $intantEntity->title());
     }
 
+    public function test_update_instant_loversCount()
+    {
+        $user = User::factory()->create();
+        $instant = Instant::factory()->create();
+        $created_at = $instant->created_at;
+        
+        $updateInstant = new UpdateInstantLoversCountUseCase(new EloquentInstantRepository());
+        $updateInstant->execute($instant->id, 2);
+        
+        $useCase = new FindInstantUseCase(new EloquentInstantRepository());
+        $intantEntity = $useCase->execute($instant->id);
+        
+        // $uu = Instant::find($instant->id);
+        // dd($uu->loversCount);
+        
+        $this->assertEquals(2, $intantEntity->loversCount());
+        
+        //$this->assertEquals(, $intantEntity->loversCount());
+    }
 }

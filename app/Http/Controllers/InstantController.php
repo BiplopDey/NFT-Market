@@ -38,7 +38,6 @@ class InstantController extends Controller
      */
     public function store(Request $request)
     {
-        //dd(Auth::user());
         $data = [
             'title' => $request->title,
             'img' => $request->img,
@@ -69,10 +68,8 @@ class InstantController extends Controller
     public function edit($id)
     {
         $instantToEdit = Instant::findOrFail($id);
-        if(!Auth::user()->isAuthor($instantToEdit)){
-            return back();
-        }
-        //dd($instantToEdit->title);
+        if(!Auth::user()->isAuthor($instantToEdit)) return back();
+        
         return view('instantEdit', ['instant'=>$instantToEdit]);
     }
 
@@ -89,7 +86,6 @@ class InstantController extends Controller
         $data = [
             'title' => $request->title,
             'img' => $request->img,
-            'user_id' => Auth::user()->id,
         ];
         $instantToUpdate->update($data);
 
@@ -105,12 +101,9 @@ class InstantController extends Controller
     public function destroy($id)
     {
         $instantToDelete = Instant::findOrFail($id);
-        if(!Auth::user()->isAuthor($instantToDelete)){
-            return back();
-        }
-            
+        if(!Auth::user()->isAuthor($instantToDelete)) return back();
+        
         $instantToDelete->delete();
-        //Instant::destroy($id);
         return back();
     }
 }

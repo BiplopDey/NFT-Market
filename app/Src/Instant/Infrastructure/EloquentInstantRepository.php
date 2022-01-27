@@ -9,6 +9,7 @@ use App\Src\Instant\Domain\Contracts\InstantRepository;
 use App\Src\Instant\Domain\InstantEntity;
 use App\Src\Instant\Domain\InstantId;
 use Carbon\Carbon;
+use Mockery;
 
 final class EloquentInstantRepository implements InstantRepository
 {
@@ -31,8 +32,17 @@ final class EloquentInstantRepository implements InstantRepository
     public function save(InstantEntity $instantEntity): void
     {
         $data = $instantEntity->toArray();
-        $data['created_at'] = new Carbon($data['createdAtTimestamp']);
-        $this->model->fill($data);
-        $this->model->save();
+                
+        $instantToUpdate = Instant::findOrFail($data['id']);
+        $dataUpdate = [
+            'title' => $data['title'],
+            'img' => $data['img'],
+            'loversCount' => $data['loversCount']
+        ];
+        $instantToUpdate->update($data);
+       //  dd($instantToUpdate->getAttributes());
+        // $this->model->save();
+        // dd(Instant::find($data['id']));
+        
     }
 }
