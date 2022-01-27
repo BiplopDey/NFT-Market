@@ -46,14 +46,12 @@ class ApplicationTest extends TestCase
     {
         $user = User::factory()->create();
         $instant = Instant::factory()->create();
-        $created_at = $instant->created_at;
         
         $updateInstant = new UpdateInstantLoversCountUseCase(new EloquentInstantRepository());
         $updateInstant->execute($instant->id, 2);
         
         $useCase = new FindInstantUseCase(new EloquentInstantRepository());
         $intantEntity = $useCase->execute($instant->id);
-        
         
         $this->assertEquals(2, $intantEntity->loversCount());
     }
