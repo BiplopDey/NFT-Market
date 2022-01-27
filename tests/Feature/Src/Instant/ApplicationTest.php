@@ -54,11 +54,7 @@ class ApplicationTest extends TestCase
         $useCase = new FindInstantUseCase(new EloquentInstantRepository());
         $intantEntity = $useCase->execute($instant->id);
         
-        // $uu = Instant::find($instant->id);
-        // dd($uu->loversCount);
         
         $this->assertEquals(2, $intantEntity->loversCount());
-        
-        //$this->assertEquals(, $intantEntity->loversCount());
     }
 }
