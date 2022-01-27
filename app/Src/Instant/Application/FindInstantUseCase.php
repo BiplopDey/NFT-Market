@@ -12,9 +12,7 @@ use App\Src\Instant\Domain\InstantId;
 
 final class FindInstantUseCase{
 
-    private InstantRepository $repository;
-
-    public function __construct(InstantRepository $repository)
+    public function __construct(private InstantRepository $repository)
     {
         $this->repository = $repository;
     }

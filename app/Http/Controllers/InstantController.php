@@ -65,9 +65,9 @@ class InstantController extends Controller
      * @param  \App\Models\Instant  $instant
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Instant $instantToEdit)
     {
-        $instantToEdit = Instant::findOrFail($id);
+      // $instantToEdit = Instant::findOrFail($id);
         if(!Auth::user()->isAuthor($instantToEdit)) return back();
         
         return view('instantEdit', ['instant'=>$instantToEdit]);
@@ -80,9 +80,8 @@ class InstantController extends Controller
      * @param  \App\Models\Instant  $instant
      * @return \Illuminate\Http\Response
      */
-    public function update($id, Request $request)
+    public function update(Instant $instantToUpdate, Request $request)
     {
-        $instantToUpdate = Instant::findOrFail($id);
         $data = [
             'title' => $request->title,
             'img' => $request->img,

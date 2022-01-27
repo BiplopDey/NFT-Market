@@ -39,10 +39,6 @@ final class EloquentInstantRepository implements InstantRepository
             'img' => $data['img'],
             'loversCount' => $data['loversCount']
         ];
-        $instantToUpdate->update($data);
-       //  dd($instantToUpdate->getAttributes());
-        // $this->model->save();
-        // dd(Instant::find($data['id']));
-        
+        $instantToUpdate->update($dataUpdate);        
     }
 }
