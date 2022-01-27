@@ -20,7 +20,7 @@ class ApplicationTest extends TestCase
      *
      * @return void
      */
-    public function test_use_case_user_can_love_an_insstant()
+    public function test_user_can_love_an_insstant()
     {
         $user = User::factory()->create();
         $instant = Instant::factory()->create();
@@ -29,14 +29,6 @@ class ApplicationTest extends TestCase
         $loveService->toggleLove($user, $instant->id);
         $this->assertEquals(1, $user->loves()->count());
         
-    }
-
-    public function test_use_time()
-    {
-        $user = User::factory()->create();
-        $instant = Instant::factory()->create();
-        $timestamp = $instant->created_at->timestamp;
-        dd(new Carbon($timestamp));
     }
 
     public function test_find_instant()
@@ -52,6 +44,6 @@ class ApplicationTest extends TestCase
        $useCase = new FindInstantUseCase(new EloquentInstantRepository());
        $intantEntity = $useCase->execute($instant->id);
        $this->assertEquals($instant->title, $intantEntity->title());
-        
     }
+
 }
