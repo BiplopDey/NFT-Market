@@ -14,7 +14,7 @@ final class FindInstantUseCase{
 
     public function __construct(private InstantRepository $repository)
     {
-        $this->repository = $repository;
+        
     }
 
     public function execute(int $id): ?InstantEntity
