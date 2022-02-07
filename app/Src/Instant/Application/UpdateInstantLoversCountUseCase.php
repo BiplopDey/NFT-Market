@@ -14,7 +14,7 @@ final class UpdateInstantLoversCountUseCase{
        // $this->repository = $repository;
         $this->finder = new FindInstantUseCase($this->repository);
     }
-
+    
     public function execute(int $id, int $loversCount):void
     {
         $instant = $this->finder->execute($id);
