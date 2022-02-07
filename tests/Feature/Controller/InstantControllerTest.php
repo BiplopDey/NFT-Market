@@ -67,8 +67,8 @@ class InstantControllerTest extends TestCase
         $instants = Instant::factory(2)->create();
 
         $response = $this->get(route('instants.show',$instants[0]->id));
-         $response->assertStatus(200)->assertViewIs('instantShow');
-         $response->assertSee($instants[0]->author->name)->assertSee($instants[0]->title);
+        $response->assertStatus(200)->assertViewIs('instantShow');
+        $response->assertSee($instants[0]->author->name)->assertSee($instants[0]->title);
     }
 
     //DELETE
