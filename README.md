@@ -8,7 +8,7 @@ NFT Market is a web page to trade NFTs. Developed with Laravel.
 - Admin has a dashboard.
 - User can do CRUD of his NFTs.
 - User can love, comment and bid an NFT.
-- In home page on the top has a slider that will show the most loved NFTs, and in below a list of NFTs.
+- In home page the slider will show the most loved NFTs, and in below a list of NFTs.
 
 ## Stack
 - Programming language: Php
@@ -30,3 +30,10 @@ php artisan test
 - Add a payment method.
 - Implement unit test.
 - Implement hexagonal arquitecuture.
+- Improve styles
+
+## Demo
+
+https://user-images.githubusercontent.com/52823579/155855287-760c0754-bd16-46ce-be60-229b2df7ea97.mp4
+
+
