@@ -13,7 +13,7 @@ NFT Market is a web page to trade NFTs. Developed with Laravel.
 ## Stack
 - Programming language: Php
 - Framework: Laravel
-- For auth: Laravel UI
+- For authentication: Laravel UI
 - For reactive front: LiveWire
 - For styles: Boostrap
 - For database: MySql
